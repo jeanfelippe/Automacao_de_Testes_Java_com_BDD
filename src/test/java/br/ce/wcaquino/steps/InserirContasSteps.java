@@ -29,7 +29,7 @@ public class InserirContasSteps {
 
 @Given("^que estou acessando a aplicacao$")
 public void que_estou_acessando_a_aplica_o() throws Throwable {
-	System.setProperty("webdriver.chrome.driver","C:\\Users\\Jean\\drivers\\chromedriver\\chromedriver.exe");
+	System.setProperty("webdriver.chrome.driver","C:\\Users\\Jean\\\\drivers\\\\chromedriver\\\\chromedriver.exe");
     driver = new ChromeDriver();
     driver.get("https://seubarriga.wcaquino.me/");
 }
@@ -52,7 +52,7 @@ public void seleciono_entrar() throws Throwable {
 @Then("^visualizo a pagina inicial$")
 public void visualizo_a_p_gina_inicial() throws Throwable {
 	String texto=driver.findElement(By.xpath("//div[@class='alert alert-success']")).getText();
-	Assert.assertEquals("Bem vindo, a!", texto);
+	assertEquals("Bem vindo, a!", texto);
 }
 
 @When("^seleciono Contas$")
@@ -65,18 +65,18 @@ public void seleciono_Adicionar() throws Throwable {
 	driver.findElement(By.linkText("Adicionar")).click();
 }
 
-//Precisei utilizar variavel static para que o numero randomico não altere durante a 
-//mesma execução
-private static int numeroRandomico;
-static {
 
-Random random = new Random();
-numeroRandomico = random.nextInt(1000);
+
+private static int numeroRandomico;
+
+static {
+	Random random = new Random();
+	numeroRandomico = random.nextInt(1000); // Gera um número entre 0 e 99
+	
 }
 
 
 
-//int argumentoRandomico=arg1+numeroRandomico;
 
 @When("^informo a conta \"([^\"]*)\"$")
 public void informo_a_conta(String arg1) throws Throwable {

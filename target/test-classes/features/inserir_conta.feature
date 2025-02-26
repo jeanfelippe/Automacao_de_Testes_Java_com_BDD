@@ -17,7 +17,7 @@ Background:
 	
 	#Alterar o nome da conta sempre
 Scenario: Deve inserir uma conta com sucesso
-	And informo a conta "Conta de Testee"
+	And informo a conta "Conta de Testeee"
 	And seleciono Salvar
 	Then a conta e inserida com sucesso
 
@@ -28,6 +28,6 @@ Scenario: Nao deve inserir uma conta sem nome
 
 
 Scenario: Nao deve inserir uma conta com nome ja existente
-	And informo a conta "Conta de Testee"
+	And informo a conta "Conta de Testeee"
 	And seleciono Salvar
 	Then sou notificado que ja existe uma conta com esse nome
