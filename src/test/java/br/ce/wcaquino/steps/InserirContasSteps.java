@@ -29,11 +29,7 @@ public class InserirContasSteps {
 
 @Given("^que estou acessando a aplicacao$")
 public void que_estou_acessando_a_aplica_o() throws Throwable {
-<<<<<<< HEAD
 	System.setProperty("webdriver.chrome.driver","C:\\Users\\Jean\\\\drivers\\\\chromedriver\\\\chromedriver.exe");
-=======
-	System.setProperty("webdriver.chrome.driver","C:\\Users\\Jean\\drivers\\chromedriver\\chromedriver.exe");
->>>>>>> ffb58c7 (melhorias de report e melhorias logicas)
     driver = new ChromeDriver();
     driver.get("https://seubarriga.wcaquino.me/");
 }
@@ -69,7 +65,6 @@ public void seleciono_Adicionar() throws Throwable {
 	driver.findElement(By.linkText("Adicionar")).click();
 }
 
-<<<<<<< HEAD
 
 
 private static int numeroRandomico;
@@ -78,23 +73,10 @@ static {
 	Random random = new Random();
 	numeroRandomico = random.nextInt(1000); // Gera um número entre 0 e 99
 	
-=======
-//Precisei utilizar variavel static para que o numero randomico não altere durante a 
-//mesma execução
-private static int numeroRandomico;
-static {
-
-Random random = new Random();
-numeroRandomico = random.nextInt(1000);
->>>>>>> ffb58c7 (melhorias de report e melhorias logicas)
 }
 
 
 
-<<<<<<< HEAD
-=======
-//int argumentoRandomico=arg1+numeroRandomico;
->>>>>>> ffb58c7 (melhorias de report e melhorias logicas)
 
 @When("^informo a conta \"([^\"]*)\"$")
 public void informo_a_conta(String arg1) throws Throwable {
