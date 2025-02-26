@@ -1,15 +1,16 @@
 # Automacao_de_Testes_Java_com_BDD
-
 Curso de Automação de Testes Utilizando Java com Selenium Webdriver em conjunto com o Cucumber.
 
 Créditos ao curso: https://www.udemy.com/course/cucumber-java/
 
+Projeto foi utilizado com implementações e melhorias de minha autoria.
 
 
 
 # [Escopo]:
 
 O curso ensina a realização de testes por meio do Cucumber com a linguagem Java e a técnica BDD.
+
 
 
 # [Frameworks]:
@@ -27,6 +28,11 @@ _BDD
 _CleanCode;
 
 _Reports;
+
+# Reports
+_Extent Report;
+
+_Cucumber Report Masterthought;
 
 
 
