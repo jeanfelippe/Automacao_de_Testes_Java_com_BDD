@@ -4,6 +4,7 @@ import static org.junit.Assert.assertEquals;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.Random;
 
 import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.By;
@@ -28,7 +29,7 @@ public class InserirContasSteps {
 
 @Given("^que estou acessando a aplicacao$")
 public void que_estou_acessando_a_aplica_o() throws Throwable {
-	System.setProperty("webdriver.chrome.driver","C:\\Users\\Jean\\drivers\\chromedriver91\\chromedriver.exe");
+	System.setProperty("webdriver.chrome.driver","C:\\Users\\Jean\\drivers\\chromedriver\\chromedriver.exe");
     driver = new ChromeDriver();
     driver.get("https://seubarriga.wcaquino.me/");
 }
@@ -64,9 +65,22 @@ public void seleciono_Adicionar() throws Throwable {
 	driver.findElement(By.linkText("Adicionar")).click();
 }
 
+//Precisei utilizar variavel static para que o numero randomico não altere durante a 
+//mesma execução
+private static int numeroRandomico;
+static {
+
+Random random = new Random();
+numeroRandomico = random.nextInt(1000);
+}
+
+
+
+//int argumentoRandomico=arg1+numeroRandomico;
+
 @When("^informo a conta \"([^\"]*)\"$")
 public void informo_a_conta(String arg1) throws Throwable {
-	driver.findElement(By.id("nome")).sendKeys(arg1);
+	driver.findElement(By.id("nome")).sendKeys(arg1+numeroRandomico);
 }
 
 @When("^seleciono Salvar$")
@@ -83,14 +97,14 @@ public void a_conta_inserida_com_sucesso() throws Throwable {
 @Then("^sou notificado que o nome da conta e obrigatorio$")
 public void souNotificadoQueONomeDaContaEObrigatorio() throws Throwable {
 	String texto=driver.findElement(By.xpath("//div[@class='alert alert-danger']")).getText();
-	Assert.assertEquals("Informe o nome da conta", texto);
+	assertEquals("Informe o nome da conta", texto);
     
 }
 
 @Then("^sou notificado que ja existe uma conta com esse nome$")
 public void souNotificadoQueJaExisteUmaContaComEsseNome() throws Throwable {
 	String texto=driver.findElement(By.xpath("//div[@class='alert alert-danger']")).getText();
-	Assert.assertEquals("J� existe uma conta com esse nome!", texto);
+	assertEquals("Já existe uma conta com esse nome!", texto);
 }
 
 
@@ -99,7 +113,7 @@ public void souNotificadoQueJaExisteUmaContaComEsseNome() throws Throwable {
 
 @Before
 public void inicio() {
-	System.out.println("come�ando aqui");
+	System.out.println("come�ando aqui");
 }
 
 

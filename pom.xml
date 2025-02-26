@@ -11,18 +11,107 @@
   
   
   </properties>
+  
+  <build>
+    <plugins>
+		
+		
+
+        <!-- Plugin para rodar os testes -->
+          <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-compiler-plugin</artifactId>
+            <version>3.8.1</version>
+            <configuration>
+				<source>1.8</source>
+				<target>1.8</target>
+			</configuration>
+        </plugin>
+        
+        <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-surefire-plugin</artifactId>
+            <version>2.18.1</version>
+        </plugin>
+
+        <!-- Plugin para formatar o relatório -->
+        <plugin>
+    <groupId>net.masterthought</groupId>
+    <artifactId>maven-cucumber-reporting</artifactId>
+    <version>5.0.0</version>
+    <executions>
+        <execution>
+                        <id>execution</id>
+                        <phase>verify</phase>
+                        <goals>
+                            <goal>generate</goal>
+                        </goals>
+            <configuration>
+                            <projectName>CucumberWebGui</projectName>
+                            <!--
+                            <outputDirectory>${project.build.directory}/cucumber-report-html</outputDirectory>
+                            <cucumberOutput>${project.build.directory}/cucumber.json</cucumberOutput>
+                            -->
+                            <outputDirectory>target/cucumber-reports/advanced-reports</outputDirectory>
+                            <cucumberOutput>target/cucumber-reports/cucumber.json</cucumberOutput>
+                            <buildNumber>1</buildNumber>
+                            <parallelTesting>false</parallelTesting>
+                            <skip>false</skip>
+                            <inputDirectory>${project.build.directory}/cucumber.reports</inputDirectory>
+                            <jsonFiles>
+								<param>**/*.json</param>		
+							</jsonFiles>
+							<classificationDirectory>${project.build.directory}/cucumber.reports</classificationDirectory>
+                        <checkBuildResult>false</checkBuildResult>
+                        </configuration>
+            <!--
+            <configuration>
+                <jsonFiles>
+                     <param>target/cucumber-reports/cucumber.json</param>
+                </jsonFiles>
+                <outputDirectory>target/cucumber-html-report</outputDirectory>
+            </configuration>
+            -->
+        </execution>
+    </executions>
+</plugin>
+    </plugins>
+</build>
 
 
 <dependencies>
 
 
                 <!-- https://mvnrepository.com/artifact/info.cukes/cucumber-java -->
+               
         <dependency>
             <groupId>io.cucumber</groupId>
-            <artifactId>cucumber-java</artifactId>
-            <version>4.8.0</version>
+            <artifactId>cucumber-java8</artifactId>
+            <version>4.8.1</version>
         </dependency>
-
+       
+         <!--
+         <dependency>
+      <groupId>io.cucumber</groupId>
+      <artifactId>cucumber-java</artifactId>
+      <version>6.9.1</version>
+    </dependency>
+    
+     -->
+     
+     
+       <dependency>
+            <groupId>io.cucumber</groupId>
+            <artifactId>cucumber-core</artifactId>
+            <version>4.8.1</version>
+        </dependency>
+        
+<dependency>
+    <groupId>org.projectlombok</groupId>
+    <artifactId>lombok</artifactId>
+    <version>1.18.30</version>  <!-- Use sempre a versão mais recente -->
+    <scope>provided</scope>
+</dependency>
 
         <dependency>
             <groupId>org.seleniumhq.selenium</groupId>
@@ -31,19 +120,52 @@
         </dependency>
 
               <!-- https://mvnrepository.com/artifact/info.cukes/cucumber-junit -->
+             
         <dependency>
             <groupId>io.cucumber</groupId>
             <artifactId>cucumber-junit</artifactId>
-            <version>4.8.0</version>
+            <version>4.8.1</version>
             <scope>test</scope>
         </dependency>
+       
+         <!--
+         <dependency>
+      <groupId>io.cucumber</groupId>
+      <artifactId>cucumber-junit</artifactId>
+      <version>6.9.1</version>
+      <scope>compile</scope>
+    </dependency>
+    
+     -->
 
-                <!-- https://mvnrepository.com/artifact/net.masterthought/cucumber-reporting -->
-        <dependency>
-            <groupId>net.masterthought</groupId>
-            <artifactId>cucumber-reporting</artifactId>
-            <version>5.4.0</version>
-        </dependency>
+<!-- https://mvnrepository.com/artifact/net.masterthought/cucumber-reporting -->
+<dependency>
+    <groupId>net.masterthought</groupId>
+    <artifactId>cucumber-reporting</artifactId>
+    <version>5.7.4</version>
+</dependency>
+
+
+
+<!--EXTENT REPORT-->
+
+		<dependency>
+		    <groupId>com.aventstack</groupId>
+		    <artifactId>extentreports-cucumber4-adapter</artifactId>
+		    <version>1.0.12</version>
+		    <!--
+		    <exclusions>
+        <exclusion>
+            <groupId>io.cucumber</groupId>
+            <artifactId>cucumber-java</artifactId>
+        </exclusion>
+        <exclusion>
+            <groupId>io.cucumber</groupId>
+            <artifactId>cucumber-core</artifactId>
+        </exclusion>
+   			</exclusions>
+   			-->
+		</dependency>
 
 
 
@@ -64,12 +186,7 @@
             <version>4.2.2</version>
         </dependency>
 
-                <!-- https://mvnrepository.com/artifact/com.aventstack/extentreports-cucumber4-adapter -->
-        <dependency>
-            <groupId>com.aventstack</groupId>
-            <artifactId>extentreports-cucumber4-adapter</artifactId>
-            <version>1.2.1</version>
-        </dependency>
+
 
 
 
@@ -79,7 +196,7 @@
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
-            <version>4.12</version>
+            <version>4.13</version>
             <scope>test</scope>
         </dependency>
 

@@ -1,8 +1,8 @@
 		
-	Feature: Ap	render Cucumber
+	Feature: Aprender Cucumber
 		Como um aluno
 		I quero aprender a utilizar Cucumber
-		Para que eu possa automatizar critérios de aceitação
+		Para que eu possa automatizar critï¿½rios de aceitaï¿½ï¿½o
 
   Scenario: Deve Executar especificacao
     Given que criei o arquivo corretamente
